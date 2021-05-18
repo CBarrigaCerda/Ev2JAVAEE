@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="evaluacion2EAR">
+        <wb-resource deploy-path="/" source-path="/EarContent" tag="defaultRootSource"/>
+        <dependent-module archiveName="evaluacion2Model.jar" deploy-path="/" handle="module:/resource/evaluacion2Model/evaluacion2Model">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="evaluacion2App.war" deploy-path="/" handle="module:/resource/evaluacion2App/evaluacion2App">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>
