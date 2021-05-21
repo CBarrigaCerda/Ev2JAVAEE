@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-        
-    <wb-module deploy-name="evaluacion2App">
-                
-        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
-                
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-                
-        <property name="java-output-path" value="/evaluacion2App/build/classes"/>
-        <property name="context-root" value="evaluacion2App"/>
             
-    </wb-module>
     
+    <wb-module deploy-name="evaluacion2App">
+                        
+        
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+                        
+        
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <dependent-module archiveName="evaluacion2Model.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/evaluacion2Model/evaluacion2Model">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+                        
+        
+        <property name="java-output-path" value="/evaluacion2App/build/classes"/>
+                
+        <property name="context-root" value="evaluacion2App"/>
+                    
+    
+    </wb-module>
+        
+
 </project-modules>

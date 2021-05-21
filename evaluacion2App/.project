@@ -3,6 +3,8 @@
 	<name>evaluacion2App</name>
 	<comment></comment>
 	<projects>
+		<project>evaluacion2EAR</project>
+		<project>evaluacion2Model</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
