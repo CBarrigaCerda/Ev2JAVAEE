@@ -37,7 +37,7 @@
 							<label class="label" for="tipo-txt">Tipo de solicitud</label>
 							<div class="control">
 								<div class="select">
-									<select name="tipo" id="tipo">
+									<select name="tipo-txt" id="tipo-txt">
 										<option>Solicitud de Cédula de Identidad</option>
 										<option>Retiro de Cédula de Identidad</option>
 										<option>Solicitud de Certificado de Nacimiento</option>

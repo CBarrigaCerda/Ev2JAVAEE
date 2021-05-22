@@ -1,5 +1,7 @@
 package cl.inacap.evaluacion2Model.dto;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Solicitud {
 
 	private int numeroSolicitud;

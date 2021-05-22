@@ -27,7 +27,7 @@
 
 							<div class="navbar-dropdown">
 								<a class="navbar-item" href="IngresarSolicitudController.do"> Ingresar Solicitud </a> <a
-									class="navbar-item" href="#"> Atender Solicitud </a>
+									class="navbar-item" href="VerSolicitudController.do"> Atender Solicitud </a>
 							</div>
 						</div>
 					</div>

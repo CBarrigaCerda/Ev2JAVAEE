@@ -3,6 +3,7 @@ package cl.inacap.evaluacion2App.controllers;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cl.inacap.evaluacion2Model.dao.ClientesDAOLocal;
+import cl.inacap.evaluacion2Model.dao.SolicitudesDAOLocal;
 import cl.inacap.evaluacion2Model.dto.Cliente;
 import cl.inacap.evaluacion2Model.dto.Solicitud;
 
@@ -20,7 +22,7 @@ public class IngresarSolicitudController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Inject
-	private ClientesDAOLocal ClientesDAO;
+	private SolicitudesDAOLocal solicitudesDAO;
 	
     public IngresarSolicitudController() {
         super();
@@ -35,7 +37,7 @@ public class IngresarSolicitudController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		List<String> errores = new ArrayList<String>();
-		
+		AtomicInteger numSolicitud = new AtomicInteger();
 		String rut = request.getParameter("rut-txt").trim();
 		if (rut.isEmpty()) {
 			errores.add("Ingrese un RUT.");
@@ -84,7 +86,10 @@ public class IngresarSolicitudController extends HttpServlet {
 			Solicitud solicitud = new Solicitud();
 			cliente.setRut(rut);
 			cliente.setNombre(nombre);
-			ClientesDAO.save(cliente);
+			solicitud.setTipo(tipo);
+			solicitud.setCliente(cliente);
+			solicitud.setNumeroSolicitud(numSolicitud.incrementAndGet());
+			solicitudesDAO.save(solicitud);
 		} else {
 			//mostrar errores
 			request.setAttribute("errores", errores);
