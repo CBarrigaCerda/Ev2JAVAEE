@@ -4,7 +4,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Solicitud {
 
-	private int numeroSolicitud;
+	private AtomicInteger numeroSolicitud;
+	private int numSolicitudOriginal;
 	private String tipo;
 	private Cliente cliente;
 	
@@ -14,10 +15,10 @@ public class Solicitud {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	public int getNumeroSolicitud() {
+	public AtomicInteger getNumeroSolicitud() {
 		return numeroSolicitud;
 	}
-	public void setNumeroSolicitud(int numeroSolicitud) {
+	public void setNumeroSolicitud(AtomicInteger numeroSolicitud) {
 		this.numeroSolicitud = numeroSolicitud;
 	}
 	public String getTipo() {
@@ -25,6 +26,9 @@ public class Solicitud {
 	}
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+	public void setNumSolicitudOriginal(int numSolicitudOriginal) {
+		this.numSolicitudOriginal = numSolicitudOriginal;
 	}
 	
 	

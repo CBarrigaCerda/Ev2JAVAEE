@@ -2,6 +2,7 @@ package cl.inacap.evaluacion2Model.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -36,7 +37,9 @@ public class SolicitudesDAO implements SolicitudesDAOLocal {
 
 	@Override
 	public List<Solicitud> filterByNumber(int numeroSolicitud) {
-		return null;
+		
+		return solicitudes.stream().filter(c->c.getNumeroSolicitud().equals(numeroSolicitud)).collect(Collectors.
+						toList());
 	}
 
 }

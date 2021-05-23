@@ -36,8 +36,9 @@ public class IngresarSolicitudController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		List<String> errores = new ArrayList<String>();
-		AtomicInteger numSolicitud = new AtomicInteger();
+		List<String> errores = new ArrayList<>();
+		List<Solicitud> solicitudes = solicitudesDAO.getAll();
+		AtomicInteger num = new AtomicInteger();
 		String rut = request.getParameter("rut-txt").trim();
 		if (rut.isEmpty()) {
 			errores.add("Ingrese un RUT.");
@@ -80,6 +81,22 @@ public class IngresarSolicitudController extends HttpServlet {
 		
 		String tipo = request.getParameter("tipo-txt");
 		
+		int numSol = 0;
+		if (tipo.contains("Retirar")) {
+			try {
+				numSol = Integer.parseInt(request.getParameter("num-sol"));
+			} catch (Exception Ex) {
+				numSol = 0;
+			}
+		}
+		
+		if (solicitudes.isEmpty()) {
+			num.incrementAndGet();
+		} else {
+			Solicitud sol = solicitudes.get(solicitudes.size()-1);
+			num.set(sol.getNumeroSolicitud().get());
+			num.incrementAndGet();
+		}
 		if (errores.isEmpty()) {
 			//agregar
 			Cliente cliente = new Cliente();
@@ -88,7 +105,8 @@ public class IngresarSolicitudController extends HttpServlet {
 			cliente.setNombre(nombre);
 			solicitud.setTipo(tipo);
 			solicitud.setCliente(cliente);
-			solicitud.setNumeroSolicitud(numSolicitud.incrementAndGet());
+			solicitud.setNumSolicitudOriginal(numSol);
+			solicitud.setNumeroSolicitud(num);
 			solicitudesDAO.save(solicitud);
 		} else {
 			//mostrar errores

@@ -46,10 +46,19 @@
 								</div>
 							</div>
 						</div>
+						<c:if test="${tipo-txt == Retiro de Cédula de Nacimiento }">
+							<div class="field">
+								<label class="label" for="num-sol">Número de solicitud</label>
+								<div class="control">
+									<input class="input" type="number" id="num-sol" name="num-sol" />
+								</div>
+							</div>
+						</c:if>
 					</div>
 					<div class="card-footer has-text-centered">
 						<div class="card-footer-item">
-							<button type="submit" class="button is-primary">Registrar</button>
+							<a class="button is-primary" type="submit"
+							  href="VerSolicitudController.do?camposVacios=${errores != null }">Registrar</a>
 						</div>
 					</div>
 				</div>
