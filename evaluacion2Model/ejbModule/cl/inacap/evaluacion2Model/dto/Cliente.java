@@ -1,12 +1,9 @@
 package cl.inacap.evaluacion2Model.dto;
 
-import java.util.List;
-
 public class Cliente {
 
 	private String nombre;
 	private String rut;
-	private List<Solicitud> solicitud;
 	
 	public String getNombre() {
 		return nombre;

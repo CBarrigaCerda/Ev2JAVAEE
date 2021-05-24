@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import cl.inacap.evaluacion2Model.dao.ClientesDAOLocal;
 import cl.inacap.evaluacion2Model.dao.SolicitudesDAOLocal;
 import cl.inacap.evaluacion2Model.dto.Cliente;
 import cl.inacap.evaluacion2Model.dto.Solicitud;
@@ -38,8 +37,16 @@ public class IngresarSolicitudController extends HttpServlet {
 		
 		List<String> errores = new ArrayList<>();
 		List<Solicitud> solicitudes = solicitudesDAO.getAll();
-		AtomicInteger num = new AtomicInteger();
+		
+		//captura de variables e iniciacion de variables
+		
 		String rut = request.getParameter("rut-txt").trim();
+		String nombre = request.getParameter("nombre-txt");
+		String tipo = request.getParameter("tipo-txt");
+		AtomicInteger num = new AtomicInteger();
+		int numSol = 0;
+		
+		//validacion rut
 		if (rut.isEmpty()) {
 			errores.add("Ingrese un RUT.");
 		} else {
@@ -70,7 +77,7 @@ public class IngresarSolicitudController extends HttpServlet {
 			}
 		}
 		
-		String nombre = request.getParameter("nombre-txt");
+		//validacion nombre
 		if (nombre.isEmpty()) {
 			errores.add("Debe ingresar un nombre valido.");
 		} else {
@@ -79,9 +86,7 @@ public class IngresarSolicitudController extends HttpServlet {
 			}
 		}
 		
-		String tipo = request.getParameter("tipo-txt");
-		
-		int numSol = 0;
+		//validar numero de solicitud para retiro
 		if (tipo.contains("Retirar")) {
 			try {
 				numSol = Integer.parseInt(request.getParameter("num-sol"));
@@ -90,6 +95,7 @@ public class IngresarSolicitudController extends HttpServlet {
 			}
 		}
 		
+		//comprobacion de numero de solicitud
 		if (solicitudes.isEmpty()) {
 			num.incrementAndGet();
 		} else {
@@ -97,6 +103,8 @@ public class IngresarSolicitudController extends HttpServlet {
 			num.set(sol.getNumeroSolicitud().get());
 			num.incrementAndGet();
 		}
+		
+		//registrar solicitud
 		if (errores.isEmpty()) {
 			//agregar
 			Cliente cliente = new Cliente();

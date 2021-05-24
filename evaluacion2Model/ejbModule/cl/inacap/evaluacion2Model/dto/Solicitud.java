@@ -27,6 +27,9 @@ public class Solicitud {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
+	public int getNumSolicitudOriginal() {
+		return numSolicitudOriginal;
+	}
 	public void setNumSolicitudOriginal(int numSolicitudOriginal) {
 		this.numSolicitudOriginal = numSolicitudOriginal;
 	}

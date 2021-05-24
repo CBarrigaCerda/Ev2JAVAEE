@@ -36,7 +36,7 @@
 		</div>
 		<div class="column is-8">
 			<table class="table is-bordered is-fullwidth">
-				<thead>
+				<thead class="has-background-primary">
 					<tr>
 						<th>Nro de Atención</th>
 						<th>Nombre de Cliente</th>
@@ -45,14 +45,15 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="solicitud" items="${solicitudes}">
+					<c:forEach var="solicitud" items="${solicitudes}" >
 						<tr>
-							<td>${solicitud.numeroSolicitud}</td>
-							<td>${solicitud.cliente.nombre}</td>
-							<td>${solicitud.tipo}</td>
-							<td><a
-								href="VerSolicitudController.do?solicitudEliminar=${solicitud.numeroSolicitud}"
-								class="has-text-danger">Atender</a></td>
+							<td>${solicitud.numeroSolicitud }</td>
+							<td>${solicitud.cliente.nombre }</td>
+							<td>${solicitud.tipo }</td>
+							<td>
+								<a href="VerSolicitudController.do?solicitudEliminar=${solicitud.numeroSolicitud}"
+								class="has-text-danger">Atender Solicitud</a>
+							</td>
 						</tr>
 					</c:forEach>
 				</tbody>

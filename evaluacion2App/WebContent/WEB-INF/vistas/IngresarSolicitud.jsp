@@ -46,19 +46,11 @@
 								</div>
 							</div>
 						</div>
-						<c:if test="${tipo-txt == Retiro de Cédula de Nacimiento }">
-							<div class="field">
-								<label class="label" for="num-sol">Número de solicitud</label>
-								<div class="control">
-									<input class="input" type="number" id="num-sol" name="num-sol" />
-								</div>
-							</div>
-						</c:if>
+						<!-- No funciono validacion de retiro para desplegar campo-->
 					</div>
 					<div class="card-footer has-text-centered">
 						<div class="card-footer-item">
-							<a class="button is-primary" type="submit"
-							  href="VerSolicitudController.do?camposVacios=${errores != null }">Registrar</a>
+							<button class="button is-primary" type="submit">Registrar</button>
 						</div>
 					</div>
 				</div>

@@ -28,12 +28,16 @@ public class VerSolicitudController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		//Iniciar variable AtomicInteger
+		AtomicInteger numSolicitud = new AtomicInteger();
 		if (request.getParameter("solicitudEliminar") != null) {
-			int numSolicitud = Integer.parseInt(request.getParameter("solicitudElimminar"));
+			String numSolicitudAux = request.getParameter("solicitudEliminar");
+			//Ingresar variable en AtomicInteger
+			numSolicitud.set(Integer.parseInt(numSolicitudAux));
 			List<Solicitud> busqueda = solicitudesDAO.filterByNumber(numSolicitud);
-			Solicitud solicitudAEliminar = busqueda.isEmpty()? null:busqueda.get(0);
-			if (solicitudAEliminar != null) {
-				solicitudesDAO.delete(solicitudAEliminar);
+			Solicitud solicitudAtendida = busqueda.isEmpty()? null:busqueda.get(0);
+			if (solicitudAtendida != null) {
+				solicitudesDAO.delete(solicitudAtendida);
 			}
 		}
 		
@@ -45,8 +49,6 @@ public class VerSolicitudController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
 		
 		doGet(request, response);
 	}
