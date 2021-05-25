@@ -45,6 +45,7 @@ public class IngresarSolicitudController extends HttpServlet {
 		String rut = request.getParameter("rut-txt").trim();
 		String nombre = request.getParameter("nombre-txt");
 		String tipo = request.getParameter("tipo-txt");
+		String numSolAux = request.getParameter("num-txt");
 		AtomicInteger num = new AtomicInteger();
 		int numSol = 0;
 		
@@ -88,13 +89,15 @@ public class IngresarSolicitudController extends HttpServlet {
 			}
 		}
 		
+		
 		//validar numero de solicitud para retiro
-		if (tipo.contains("Retirar")) {
+		if (tipo.contains("Retiro")) {
 			try {
-				numSol = Integer.parseInt(request.getParameter("num-sol"));
+				numSol = Integer.parseInt(numSolAux);
 			} catch (Exception Ex) {
-				numSol = 0;
+				errores.add("Debe ingresar un número de solicitud.");
 			}
+			
 		}
 		
 		//comprobacion de numero de solicitud
@@ -124,5 +127,7 @@ public class IngresarSolicitudController extends HttpServlet {
 			request.setAttribute("errores", errores);
 			doGet(request, response);
 		}
+		
+		
 	}
 }

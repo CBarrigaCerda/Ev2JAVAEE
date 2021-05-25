@@ -46,7 +46,12 @@
 								</div>
 							</div>
 						</div>
-						<!-- No funciono validacion de retiro para desplegar campo-->
+						<div class="field">
+								<label class="label" for="num-txt">Número de solicitud</label>
+								<div class="control">
+									<input class="input" type="number" id="num-txt" name="num-txt" />
+								</div>
+							</div>
 					</div>
 					<div class="card-footer has-text-centered">
 						<div class="card-footer-item">
