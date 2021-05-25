@@ -15,7 +15,7 @@
 							<label class="label" for="tipo-select">Tipo de solicitud</label>
 							<div class="control">
 								<div class="select">
-									<select name="tipo-select>" id="tipo-select">
+									<select name="tipo-select" id="tipo-select">
 										<option>Todas</option>
 										<option>Solicitud de Cédula de Identidad</option>
 										<option>Retiro de Cédula de Identidad</option>

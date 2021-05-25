@@ -35,7 +35,9 @@ public class IngresarSolicitudController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		//Metodo monje tibetano Sebastian Araya
 		List<String> errores = new ArrayList<>();
+		
 		List<Solicitud> solicitudes = solicitudesDAO.getAll();
 		
 		//captura de variables e iniciacion de variables
@@ -116,10 +118,11 @@ public class IngresarSolicitudController extends HttpServlet {
 			solicitud.setNumSolicitudOriginal(numSol);
 			solicitud.setNumeroSolicitud(num);
 			solicitudesDAO.save(solicitud);
+			response.sendRedirect("VerSolicitudController.do");
 		} else {
 			//mostrar errores
 			request.setAttribute("errores", errores);
+			doGet(request, response);
 		}
-		doGet(request, response);
 	}
 }

@@ -38,8 +38,8 @@ public class SolicitudesDAO implements SolicitudesDAOLocal {
 
 	@Override
 	public List<Solicitud> filterByNumber(AtomicInteger numeroSolicitud) {
-		return solicitudes.stream().filter(c->c.getNumeroSolicitud() == numeroSolicitud).collect(Collectors.
-						toList());
+		return solicitudes.stream().filter(c->c.getNumeroSolicitud().get()==(numeroSolicitud.get())).collect(Collectors.
+				toList());
 	}
 	
 	public List<Solicitud> filterByName(String tipo){

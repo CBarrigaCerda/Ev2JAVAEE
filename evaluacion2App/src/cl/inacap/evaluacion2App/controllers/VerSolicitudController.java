@@ -40,11 +40,24 @@ public class VerSolicitudController extends HttpServlet {
 				solicitudesDAO.delete(solicitudAtendida);
 			}
 		}
+	
+		String tipo = request.getParameter("tipo-select");
 		
-		List<Solicitud> solicitudes = solicitudesDAO.getAll();
-		
-		request.setAttribute("solicitudes", solicitudes);
-		
+		if (tipo != null) {
+			if (!tipo.contains("Todas")) {
+				List<Solicitud> solicitudes = solicitudesDAO.filterByName(tipo);
+				request.setAttribute("solicitudes", solicitudes);
+			}else {
+				List<Solicitud> solicitudes = solicitudesDAO.getAll();
+				
+				request.setAttribute("solicitudes", solicitudes);
+			}
+		} else {
+			List<Solicitud> solicitudes = solicitudesDAO.getAll();
+			
+			request.setAttribute("solicitudes", solicitudes);
+		}
+
 		request.getRequestDispatcher("WEB-INF/vistas/VerSolicitud.jsp").forward(request, response);
 	}
 
